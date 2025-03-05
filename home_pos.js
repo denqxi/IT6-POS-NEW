@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Function to show the selected page (Menu or Order)
     function showPage(element) {
         const page = element.getAttribute("data-page");
 
@@ -46,35 +47,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ✅ Handle menu tab navigation
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', function () {
-                // Remove 'active' class from all buttons
-                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-    
-                // Hide all tab content
-                document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('show', 'active'));
-    
-                // Show the clicked tab content
-                const tabContent = document.getElementById(this.getAttribute('data-tab'));
-                if (tabContent) {
-                    tabContent.classList.add('show', 'active');
-                } else {
-                    console.error("Error: Tab content not found!");
-                }
-            });
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', function () {
+            // Remove 'active' class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            // Hide all tab content
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('show', 'active'));
+
+            // Show the clicked tab content
+            const tabContent = document.getElementById(this.getAttribute('data-tab'));
+            if (tabContent) {
+                tabContent.classList.add('show', 'active');
+            } else {
+                console.error("Error: Tab content not found!");
+            }
         });
-    
-        // ✅ Set "All" as the default active menu tab on page load
-        const defaultTab = document.querySelector('.tab-button[data-tab="all"]');
-        if (defaultTab) {
-            defaultTab.click();
-        }
     });
-    
 
-
-
-
-
+    // ✅ Set "All" as the default active menu tab on page load
+    const defaultTab = document.querySelector('.tab-button[data-tab="all"]');
+    if (defaultTab) {
+        defaultTab.click();
+    }
+});
